@@ -1,12 +1,12 @@
 # Les branches avec Git #
 
 Quasiment tous les VCS ont une forme ou une autre de gestion de branche.
-Faire une branche signifie diverger de la ligne principale de développement et continuer à travailler sans se préoccuper de cette ligne principale.
+Créer une branche signifie diverger de la ligne principale de développement et continuer à travailler sans se préoccuper de cette ligne principale.
 Dans de nombreux outils de gestion de version, cette fonctionnalité est souvent chère en ressources et nécessite de créer une nouvelle copie du répertoire de travail, ce qui peut prendre longtemps dans le cas de gros projets.
 
 De nombreuses personnes font référence au modèle de gestion de branche de Git comme LA fonctionnalité et c'est sûrement la spécificité de Git par rapport à la communauté des gestionnaires de version.
 Pourquoi est-elle si spéciale ?
-La méthode de Git pour gérer les branches est particulièrement légère, permettant de réaliser des embranchements quasi instantanément et de basculer de branche généralement aussi rapidement.
+La méthode de Git pour gérer les branches est particulièrement légère, permettant de réaliser des embranchements quasi instantanément et de basculer entre les branches généralement aussi rapidement.
 À la différence de nombreux autres gestionnaires de version, Git encourage à travailler avec des méthodes qui privilégient la création et la fusion de branches, jusqu'à plusieurs fois par jour.
 Bien comprendre et maîtriser cette fonctionnalité est un atout pour faire de Git un outil unique qui peut littéralement changer la manière de développer.
 
@@ -24,7 +24,7 @@ Indexer les fichiers signifie calculer la somme de contrôle pour chacun (la fon
 	$ git add LISEZMOI test.rb LICENCE
 	$ git commit -m 'commit initial de mon projet'
 
-Lorsque vous créez le *commit* en lançant la commande `git *commit*`, Git calcule la somme de contrôle de chaque répertoire (ici, seulement pour le répertoire racine) et stocke ces objets arbres dans le dépôt Git.
+Lorsque vous créez le *commit* en lançant la commande `git commit`, Git calcule la somme de contrôle de chaque répertoire (ici, seulement pour le répertoire racine) et stocke ces objets arbres dans le dépôt Git.
 Git crée alors un objet *commit* qui contient les méta-données et un pointeur vers l'arbre projet d'origine de manière à pouvoir recréer l'instantané si besoin.
 
 Votre dépôt Git contient à présent cinq objets :
@@ -65,7 +65,7 @@ Il conserve un pointeur spécial appelé `HEAD`.
 Remarquez que sous cette appellation se cache un concept très différent de celui utilisé dans les autres VCS tels que Subversion ou CVS.
 Dans Git, c'est un pointeur sur la branche locale où vous vous trouvez.
 Dans notre cas, vous vous trouvez toujours sur `master`.
-La commande git branch n'a fait que créer une nouvelle branche — elle n'a pas fait basculer la copie de travail vers cette branche (Cf. figure 3-5).
+La commande `git branch` n'a fait que créer une nouvelle branche — elle n'a pas fait basculer la copie de travail vers cette branche (Cf. figure 3-5).
 
 Insert 18333fig0305.png
 Figure 3-5. fichier `HEAD` pointant sur la branche active
@@ -78,7 +78,7 @@ Basculons vers la nouvelle branche test :
 Cela déplace `HEAD` pour le faire pointer vers la branche test (voir figure 3-6)
 
 Insert 18333fig0306.png
-Figure 3-6. `HEAD` pointe vers une autre branche quand on bascule de branche
+Figure 3-6. `HEAD` pointe vers une autre branche quand on bascule entre les branches
 
 Qu'est-ce que cela signifie ?
 Et bien, faisons une autre validation :
@@ -99,7 +99,7 @@ Retournons sur la branche `master` :
 La figure 3-8 montre le résultat.
 
 Insert 18333fig0308.png
-Figure 3-8. `HEAD` se déplace sur une autre branche lors d'un checkout.
+Figure 3-8. `HEAD` se déplace sur une autre branche lors d'un *checkout*.
 
 Cette commande a réalisé deux actions.
 Elle a remis le pointeur `HEAD` sur la branche `master` et elle a replacé les fichiers de la copie de travail dans l'état pointé par `master`.
@@ -280,7 +280,7 @@ Cela rend la fusion beaucoup plus facile dans Git que dans les autres systèmes.
 Insert 18333fig0317.png
 Figure 3-17. Git crée automatiquement un nouvel objet *commit* qui contient le travail fusionné.
 
-A présent que votre travail a été fusionné, vous n'avez plus besoin de la branche `prob53`.
+À présent que votre travail a été fusionné, vous n'avez plus besoin de la branche `prob53`.
 Vous pouvez l'effacer et fermer manuellement le ticket dans votre outil de suivi de faits techniques :
 
 	$ git branch -d prob53
@@ -375,7 +375,7 @@ Le message de validation ressemble d'habitude à ceci :
 	# and try again.
 	#
 
-Vous pouvez modifier ce message pour inclure les détails sur la résolution du conflit si vous pensez que cela peut être utile lors d'une revue ultérieure — pourquoi vous avez fait ceci si ce n'est pas clair.
+Vous pouvez modifier ce message pour inclure les détails sur la résolution du conflit si vous pensez que cela peut être utile lors d'une revue ultérieure — pourquoi vous avez fait ceci, si ce n'est pas clair.
 
 ## Gestion de branches ##
 
@@ -390,7 +390,7 @@ Si vous la lancez sans argument, vous obtenez la liste des branches courantes :
 	  test
 
 Notez le caractère `*` qui préfixe la branche `master`.
-Ce caractère indique la branche qui a été extraite.
+Ce caractère indique la branche qui est actuellement extraite.
 Ceci signifie que si vous validez des modifications, la branche `master` avancera avec votre travail.
 Pour visualiser les dernières validations sur chaque branche, vous pouvez lancer le commande `git branch -v` :
 
@@ -434,9 +434,9 @@ Ce chapitre traite des différents styles de développement que cette gestion de
 Comme Git utilise une fusion à 3 branches, fusionner une branche dans une autre plusieurs fois sur une longue période est généralement facile.
 Cela signifie que vous pouvez travailler sur plusieurs branches ouvertes en permanence pendant plusieurs étapes de votre cycle de développement ; vous pouvez fusionner régulièrement certaines dans d'autres.
 
-De nombreux développeurs utilisent Git avec une méthode qui utilise cette approche, telle que n'avoir que du code entièrement stable et testé dans la branche `master`, voire du code qui a été ou sera publié.
-Ils ont une autre branche en parallèle appelée develop qui, lorsqu'elle devient stable, peut être fusionnée dans `master`.
-Cette branche est utilisée pour tirer des branches spécifiques (branches avec une faible durée de vie, telles que notre branche `prob53`) quand elles sont prêtes, s'assurer qu'elles passent l'integralité des tests et n'introduisent pas de bugs.
+De nombreux développeurs utilisent Git avec une méthode qui utilise cette approche, telle que n'avoir que du code entièrement stable et testé dans la branche `master`, voire seulement du code qui a été ou sera publié.
+Ils ont une autre branche en parallèle appelée develop ou suite, sur laquelle ils travaillent ou utilisent pour en tester la stabilité — elle n'est pas nécessairement toujours stable, mais quand elle le devient, elle peut être fusionnée dans `master`.
+Cette branche est utilisée pour tirer des branches spécifiques à un sujet (branches avec une faible durée de vie, telles que notre branche `prob53`) quand elles sont prêtes, pour s'assurer qu'elles passent l'integralité des tests et n'introduisent pas de bugs.
 
 En réalité, nous parlons de pointeurs qui se déplacent le long des lignes des *commits* réalisés.
 Les branches stables sont plus en profondeur dans la ligne de l'historique des *commits* tandis que les branches des derniers développements sont plus en hauteur dans l'historique (voir figure 3-18).
@@ -512,7 +512,7 @@ Lancez la commande `git fetch origin` pour synchroniser votre travail.
 Cette commande recherche le serveur hébergeant origin (dans notre cas, `git.notresociete.com`), en récupère toutes les nouvelles données et met à jour votre base de donnée locale en déplaçant votre pointeur `origin/master` à sa valeur nouvelle à jour avec le serveur distant (voir figure 3-24).
 
 Insert 18333fig0324.png
-Figure 3-24. La commande git fetch met à jour vos références distantes.
+Figure 3-24. La commande `git fetch` met à jour vos références distantes.
 
 Pour démontrer l'usage de multiples serveurs distants et le fonctionnement avec des branches multiples, supposons que vous avez un autre serveur Git interne qui n'est utilisé pour le développement que par une équipe.
 Ce serveur se trouve sur `git.equipe1.notresociete.com`.
@@ -535,7 +535,7 @@ Vos branches locales ne sont pas automatiquement synchronisées sur les serveurs
 De cette manière, vous pouvez utiliser des branches privées pour le travail que vous ne souhaitez pas partager et ne pousser que les branches sur lesquelles vous souhaitez collaborer.
 
 Si vous possédez une branche nommée `correctionserveur` sur laquelle vous souhaitez travailler avec des tiers, vous pouvez la pousser de la même manière que vous avez poussé votre première branche.
-Lancez `git push [serveur distant] [branche]` :
+Lancez `git push (distant) (branche)` :
 
 	$ git push origin correctionserveur
 	Counting objects: 20, done.
@@ -624,7 +624,7 @@ Dans ce chapitre, vous apprendrez la signification de rebaser, comment le faire,
 
 ### Les bases ###
 
-Si vous revenez à un exemple précédent du chapitre sur la fusion (voir la figure 3-27), vous remarquerez que votre travail a divergé et que vous avez ajouté de *commits* sur deux branches différentes.
+Si vous revenez à un exemple précédent du chapitre sur la fusion (voir la figure 3-27), vous remarquerez que votre travail a divergé et que vous avez ajouté des *commits* sur deux branches différentes.
 
 Insert 18333fig0327.png
 Figure 3-27. Votre historique divergent initial.
@@ -661,8 +661,8 @@ Figure 3-30. Avance rapide sur la branche `master`.
 Il n'y a pas de différence entre les résultats des deux types d'intégration, mais rebaser rend l'historique plus clair.
 Si vous examinez le journal de la branche rebasée, elle est devenue linéaire : toutes les modifications apparaissent en série même si elles ont eu lieu en parallèle.
 
-Vous aurez souvent à rebaser pour vous assurer que les patchs que vous envoyez s'appliquent correctement sur une branche distante — par exemple, sur un projet où vous souhaitez contribuer mais que vous ne maintenez pas.
-Dans ce cas, vous réaliseriez votre travail dans une branche puis vous rebaseriez votre travail sur `origin/master` quand vous êtes prêt à soumettre vos patches au projet principal.
+Vous aurez souvent à rebaser pour vous assurer que les retouches que vous envoyez s'appliquent correctement sur une branche distante — par exemple, sur un projet où vous souhaitez contribuer mais que vous ne maintenez pas.
+Dans ce cas, vous réaliseriez votre travail dans une branche puis vous rebaseriez votre travail sur `origin/master` quand vous êtes prêt à soumettre vos correctifs au projet principal.
 De cette manière, le mainteneur n'a pas à réaliser de travail d'intégration — juste une avance rapide ou simplement une application propre.
 
 Il faut noter que l'instantané pointé par le *commit* final, qu'il soit le dernier des *commits* d'une opération de rebase ou le *commit* final issu d'une fusion, sont en fait le même instantané — c'est juste que l'historique est différent.
@@ -684,7 +684,7 @@ Vous pouvez récupérer les modifications pour le côté client qui ne sont pas 
 
 	$ git rebase --onto master serveur client
 
-Cela signifie en essence « Extrait la branche client, détermine les patchs depuis l'ancêtre commun des branches `client` et `serveur` puis rejoue les sur `master` ».
+Cela signifie en essence « Extrait la branche client, détermine les retouches depuis l'ancêtre commun des branches `client` et `serveur` puis rejoue les sur `master` ».
 C'est assez complexe, mais le résultat visible sur la figure 3-32 est assez impressionnant.
 
 Insert 18333fig0332.png
@@ -699,7 +699,7 @@ Insert 18333fig0333.png
 Figure 3-33. Avance rapide sur votre branche `master` pour inclure les modifications de la branche client.
 
 Supposons que vous décidiez de tirer votre branche `serveur` aussi.
-Vous pouvez rebaser la branche `serveur` sur la branche `master` sans avoir à l'extraire avant en utilisant `git rebase [branchedebase] [branchedesujet]` — qui extrait la branche thématique (dans notre cas, `serveur`) pour vous et la rejoue sur la branche de base (`master`) :
+Vous pouvez rebaser la branche `serveur` sur la branche `master` sans avoir à l'extraire avant en utilisant `git rebase (branchedebase) (branchedesujet)` — qui extrait la branche thématique (dans notre cas, `serveur`) pour vous et la rejoue sur la branche de base (`master`) :
 
 	$ git rebase master serveur
 
@@ -740,7 +740,7 @@ Votre historique de *commits* ressemble à la figure 3-36.
 Insert 18333fig0336.png
 Figure 3-36. Cloner un dépôt et baser du travail dessus.
 
-A présent, une autre personne travaille et inclut une fusion, puis elle pousse ce travail sur le serveur central.
+À présent, une autre personne travaille et inclut une fusion, puis elle pousse ce travail sur le serveur central.
 Vous le récupérez et vous fusionnez la nouvelle branche distante dans votre copie, ce qui donne l'historique de la figure 3-37.
 
 Insert 18333fig0337.png
@@ -754,7 +754,7 @@ Insert 18333fig0338.png
 Figure 3-38. Quelqu'un pousse des *commits* rebasés, en abandonnant les *commits* sur lesquels vous avez fondé votre travail.
 
 
-A ce moment, vous devez fusionner son travail une nouvelle fois, même si vous l'avez déjà fait.
+À ce moment, vous devez fusionner son travail une nouvelle fois, même si vous l'avez déjà fait.
 Rebaser change les empreintes SHA-1 de ces *commits*, ce qui les rend nouveaux aux yeux de Git, alors qu'en fait, vous avez déjà le travail de C4 dans votre historique (voir figure 3-39).
 
 
@@ -773,4 +773,4 @@ Si vous tentez de rebaser des *commits* déjà publiés sur lesquels les gens on
 
 Nous avons traité les bases des branches et des fusions dans Git.
 Vous devriez être à l'aise pour le création et le basculement sur de nouvelles branches, le basculement entre branches et la fusion de branches locales.
-Vous devriez aussi être capable de partager vos branches en les poussant sur une serveur partagé, travailler avec d'autres personnes sur des branches partagées et rebaser vos branches avant de les partager.
+Vous devriez aussi être capable de partager vos branches en les poussant sur un serveur partagé, travailler avec d'autres personnes sur des branches partagées et rebaser vos branches avant de les partager.

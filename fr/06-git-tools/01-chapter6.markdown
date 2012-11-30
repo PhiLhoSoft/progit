@@ -1,6 +1,6 @@
 # Utilitaires Git #
 
-A présent, vous avez appris les commandes et modes de fonctionnements usuels requis pour gérer et maintenir un dépôt Git pour la gestion de votre code source.
+À présent, vous avez appris les commandes et modes de fonctionnements usuels requis pour gérer et maintenir un dépôt Git pour la gestion de votre code source.
 Vous avez déroulé les routines de suivi et de validation de fichiers, vous avez exploité la puissance de l'index, de la création et de la fusion de branches locales de travail.
 
 Maintenant, vous allez explorer un certain nombre de fonctionnalités particulièrement efficaces, fonctionnalités que vous utiliserez moins souvent mais dont vous pourriez avoir l'usage à un moment ou à un autre.
@@ -216,7 +216,7 @@ Vous pouvez également combiner ces syntaxes — vous pouvez obtenir le second p
 
 ### Plages de *commits* ###
 
-A présent que vous pouvez spécifier des *commits* individuels, voyons comment spécifier des plages de *commits*.
+À présent que vous pouvez spécifier des *commits* individuels, voyons comment spécifier des plages de *commits*.
 Ceci est particulièrement pratique pour la gestion des branches — si vous avez beaucoup de branches, vous pouvez utiliser les plages pour répondre à des questions telles que "Quel travail sur cette branche n'ai-je pas encore fusionné sur ma branche principale ?".
 
 #### Double point ####
@@ -431,7 +431,7 @@ Git vous demandera quels fichiers vous voulez indexer partiellement, puis, pour 
 	   def blame(path)
 	Stage this hunk [y,n,a,d,/,j,J,g,e,?]?
 
-A cette étape, vous disposez de bon nombre d'options.
+À cette étape, vous disposez de bon nombre d'options.
 `?` vous liste les actions possibles dont voici une traduction :
 
 	indexer cette partie [y,n,a,d,/,j,J,g,e,?]?
@@ -1265,7 +1265,7 @@ Vous devez déplacer le répertoire du sous-module `rack` en dehors de votre dé
 	README	rack
 
 Puis, lorsque vous recommutez, vous aurez un répertoire `rack` vide.
-Vous pouvez soit exécuter `git submodule update` pour clôner une nouvelle fois, ou vous pouvez remettre votre répertoire `/tmp/rack` dans votre répertoire vide.
+Vous pouvez soit exécuter `git submodule update` pour cloner une nouvelle fois, ou vous pouvez remettre votre répertoire `/tmp/rack` dans votre répertoire vide.
 
 ## Fusion de sous-arborescences ##
 

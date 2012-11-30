@@ -86,7 +86,7 @@ Pour cloner une dépôt Git à travers SSH, spécifiez le préfixe `ssh://` dans
 	$ git clone ssh://utilisateur@serveur:projet.git
 
 ou ne spécifiez  pas de protocole du tout — Git choisit SSH par défaut si vous n'êtes pas explicite :
-	
+
 	$ git clone utilisateur@serveur:projet.git
 
 Vous pouvez aussi ne pas spécifier de nom d'utilisateur et Git utilisera par défaut le nom de login.
@@ -213,7 +213,7 @@ Vous pouvez mettre en place votre dépôt en copiant le dépôt nu :
 
 	$ scp -r mon_projet.git utilisateur@git.exemple.com:/opt/git
 
-A partir de maintenant, tous les autres utilisateurs disposant d'un accès SSH au serveur et ayant un accès en lecture seule au répertoire `/opt/git` peuvent cloner votre dépôt en lançant la commande
+À partir de maintenant, tous les autres utilisateurs disposant d'un accès SSH au serveur et ayant un accès en lecture seule au répertoire `/opt/git` peuvent cloner votre dépôt en lançant la commande
 
 	$ git clone utilisateur@git.exemple.com:/opt/git/mon_projet.git
 
@@ -591,7 +591,7 @@ Le fichier `gitosis.conf` contient la configuration du projet `gitosis-admin` cl
 
 Il indique que l'utilisateur « scott » — l'utilisateur dont la clef publique a servi à initialiser Gitosis — est le seul à avoir accès au projet `gitosis-admin`.
 
-A présent, ajoutons un nouveau projet.
+À présent, ajoutons un nouveau projet.
 Ajoutons une nouvelle section appelée `mobile` où vous listez les développeurs de votre équipe mobile et les projets auxquels ces développeurs ont accès.
 Comme « scott » est le seul utilisateur déclaré pour l'instant, vous devrez l'ajouter comme membre unique et vous créerez un nouveau projet appelé `iphone_projet` pour commencer :
 
@@ -656,7 +656,7 @@ Si vous souhaitez que John n'ait qu'un accès en lecture à ce projet, vous pouv
 	readonly = iphone_projet
 	members = john
 
-A présent, John peut cloner le projet et récupérer les mises à jour, mais Gitosis lui refusera de pousser sur ce projet.
+À présent, John peut cloner le projet et récupérer les mises à jour, mais Gitosis lui refusera de pousser sur ce projet.
 Vous pouvez créer autant que groupes que vous désirez contenant des utilisateurs et projets différents.
 Vous pouvez aussi spécifier un autre groupe comme membre du groupe (avec le préfixe `@`) pour faire hériter ses membres automatiquement :
 
