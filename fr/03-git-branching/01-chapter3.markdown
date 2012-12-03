@@ -220,7 +220,7 @@ Vous réalisez ceci au moyen de la commande `git merge` :
 	 LISEZMOI |    1 -
 	 1 files changed, 0 insertions(+), 1 deletions(-)
 
-Vous noterez la mention "Fast forward" qui signifie avance rapide dans cette fusion.
+Vous noterez la mention « Fast forward » qui signifie avance rapide dans cette fusion.
 Comme le *commit* pointé par la branche que vous avez fusionné était directement descendant du *commit* sur lequel vous vous trouvez, Git a avancé le pointeur en avant.
 Autrement dit, lorsque l'on cherche à fusionner un *commit* qui peut être joint en suivant l'historique depuis le *commit* d'origine, Git avance simplement le pointeur car il n'y a pas de travaux divergeant à réellement fusionner — ceci s'appelle l'avance rapide.
 
@@ -236,7 +236,7 @@ Vous pouvez l'effacer avec l'option `-d` de la commande `git branch` :
 	$ git branch -d correctif
 	Deleted branch correctif (3a0874c).
 
-Maintenant, il est temps de basculer sur la branche "travaux en cours" sur le problème #53 et de continuer à travailler dessus (voir figure 3-15) :
+Maintenant, il est temps de basculer sur la branche « travaux en cours » sur le problème #53 et de continuer à travailler dessus (voir figure 3-15) :
 
 	$ git checkout prob53
 	Switched to branch "prob53"
@@ -344,7 +344,7 @@ Si vous souhaitez utiliser un outil graphique pour résoudre ces problèmes, vou
 	  {remote}: modified
 	Hit return to start merge resolution tool (opendiff):
 
-Si vous souhaitez utiliser un outil de fusion autre que celui par défaut (Git a choisi `opendiff` pour moi dans ce cas car j'utilise la commande sous Mac), vous pouvez voir tous les outils supportés après l'indication "merge tool candidates".
+Si vous souhaitez utiliser un outil de fusion autre que celui par défaut (Git a choisi `opendiff` pour moi dans ce cas car j'utilise la commande sous Mac), vous pouvez voir tous les outils supportés après l'indication « merge tool candidates ».
 Tapez le nom de l'outil que vous préféreriez utiliser.
 Au chapitre 7, nous expliquerons comment changer cette valeur par défaut dans votre environnement.
 
@@ -451,7 +451,7 @@ Figure 3-19. Représentation des branches comme des silos.
 
 Vous pouvez reproduire ce schéma sur plusieurs niveaux de stabilité.
 Des projets plus gros ont aussi une branche `proposed` ou `pu` (proposed updates) qui permet d'intégrer des branches qui ne sont pas encore prêtes pour la prochaine version ou pour `master`.
-L'idée reste que les branches évoluent à différents niveaux de stabilité ; quand elles atteignent un niveau plus stable, elles peuvent être fusionnées dans la branche de stabilité supérieure.
+L'idée reste que les branches évoluent à différents niveaux de stabilité ; quand elles atteignent un niveau plus stable, elles peuvent être fusionnées dans la branche de stabilité supérieure.
 Une fois encore, les branches au long cours ne sont pas nécessaires, mais s'avèrent souvent utiles, spécialement dans le cadre de projets gros ou complexes.
 
 ### Les branches thématiques ###
@@ -562,7 +562,7 @@ La prochaine fois qu'un de vos collaborateurs récupère les données depuis le 
 	From git@github.com:schacon/simplegit
 	 * [new branch]      correctionserveur    -> origin/correctionserveur
 
-Important : lorsque l'on récupère une nouvelle branche depuis un serveur distant, il n'y a pas de création automatique d'une copie locale éditable.
+Important : lorsque l'on récupère une nouvelle branche depuis un serveur distant, il n'y a pas de création automatique d'une copie locale éditable.
 En d'autres termes, il n'y a pas de branche `correctionserveur`, seulement un pointeur sur la branche `origin/correctionserveur` qui n'est pas modifiable.
 
 Pour fusionner ce travail dans votre branche actuelle de travail, vous pouvez lancer `git merge origin/correctionserveur`.

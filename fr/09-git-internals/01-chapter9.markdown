@@ -7,7 +7,7 @@ J'en ai donc fait le dernier chapitre de ce livre pour que vous puissiez le lire
 Je vous laisse le choix.
 
 Maintenant que vous êtes ici, commençons.
-Tout d'abord et même si ce n'est pas clair tout de suite, Git est fondamentalement un système de fichiers adressables par contenu (content-addressable filesystem) avec l'interface utilisateur d'un VCS au-dessus.
+Tout d'abord et même si ce n'est pas clair tout de suite, Git est fondamentalement un système de fichiers adressables par contenu (*content-addressable filesystem*) avec l'interface utilisateur d'un VCS au-dessus.
 Vous en apprendrez plus à ce sujet dans quelques instants.
 
 Aux premiers jours de Git (surtout avant la version 1.5), l'interface utilisateur était beaucoup plus complexe, car elle était centrée sur le système de fichier plutôt que sur l'aspect VCS.
@@ -18,13 +18,13 @@ Ensuite, vous apprendrez les mécanismes de transport/transmission/communication
 
 ## Plomberie et porcelaine ##
 
-Ce livre couvre l'utilisation de Git avec une trentaine de verbes comme `checkout`, `branch`, `remote` ...
-Mais, puisque Git était initialement une boîte à outils (N.d.T : Toolkit) pour VCS, plutôt qu'un VCS complet et conviviale, il dispose de tout un ensemble d'actions pour les tâches bas niveau qui étaient conçues pour être liées à la UNIX ou appelées depuis des scripts.
-Ces commandes sont dites commandes de "plomberie" (N.d.T "plumbing") et les autres, plus conviviales sont appelées "porcelaines" (N.d.T : "porcelain").
+Ce livre couvre l'utilisation de Git avec une trentaine de verbes comme `checkout`, `branch`, `remote`...
+Mais, puisque Git était initialement une boîte à outils (*toolkit*) pour VCS, plutôt qu'un VCS complet et conviviale, il dispose de tout un ensemble d'actions pour les tâches bas niveau qui étaient conçues pour être liées dans le style UNIX ou appelées depuis des scripts.
+Ces commandes sont dites commandes de « plomberie » (*plumbing*) et les autres, plus conviviales sont appelées « porcelaines » (*porcelain*).
 
 Les huit premiers chapitres du livre concernent presque exclusivement les commandes porcelaine.
-Par contre, dans ce chapitre, vous serez principalement confronté aux commandes de plomberie bas niveaux, car elles vous donnent accès au fonctionnement interne de Git et aident à montrer comment et pourquoi Git fonctionne comme il le fait.
-Ces commandes ne sont pas faites pour être utilisées à la main sur ligne de commandes, mais sont plutôt utilisées comme briques de bases pour écrire de nouveaux outils et scripts personnalisés.
+Par contre, dans ce chapitre, vous serez principalement confronté aux commandes de plomberie bas niveau, car elles vous donnent accès au fonctionnement interne de Git et aident à montrer comment et pourquoi Git fonctionne comme il le fait.
+Ces commandes ne sont pas faites pour être utilisées à la main sur une ligne de commande, mais sont plutôt utilisées comme briques de base pour écrire de nouveaux outils et scripts personnalisés.
 
 Quand vous exécutez `git init` dans un nouveau répertoire ou un répertoire existant, Git crée un répertoire `.git` qui contient presque tout ce que Git stocke et manipule.
 Si vous voulez sauvegarder ou cloner votre dépôt, copier ce seul répertoire suffirait presque.
@@ -143,10 +143,10 @@ Git peut vous donner le type d'objet de n'importe quel objet Git, étant donné 
 
 ### Objets arbre ###
 
-Le prochain type que vous allez étudier est l'objet arbre (N.d.t 'tree') qui résout le problème de stockage d'un groupe de fichiers.
+Le prochain type que vous allez étudier est l'objet arbre (*tree*) qui résout le problème de stockage d'un groupe de fichiers.
 Git stocke du contenu de la même manière, mais plus simplement, qu'un système de fichier UNIX.
 Tout le contenu est stocké comme des objets de type arbre ou blob : un arbre correspondant à un répertoire UNIX et un blob correspond à peu près à un i-noeud ou au contenu d'un fichier.
-Un unique arbre contient une ou plusieurs entrées de type arbre, chacune incluant un pointeur SHA-1 vers un blob, un sous-arbre (N.d.T sub-tree), ainsi que les droits d'accès (N.d.t 'mode'), le type et le nom de fichier.
+Un unique arbre contient une ou plusieurs entrées de type arbre, chacune incluant un pointeur SHA-1 vers un blob, un sous-arbre (*sub-tree*), ainsi que les droits d'accès (*mode*), le type et le nom de fichier.
 L'arbre le plus récent du projet simplegit pourrait ressembler, par exemple à ceci :
 
 	$ git cat-file -p master^{tree}
@@ -178,7 +178,7 @@ Vous pouvez ensuite préciser le mode, SHA-1 et le nom de fichier :
 
 Dans ce cas, vous précisez le mode `100644`, qui signifie que c'est un fichier normal.
 Les alternatives sont `100755`, qui signifie que c'est un exécutable et `120000`, qui précise que c'est un lien symbolique.
-Le concept de « mode » a été repris des mode UNIX, mais est beaucoup moins flexible : ces trois modes sont les seuls valides pour Git, pour les fichiers (blobs) (bien que d'autres modes soient utilisés pour les répertoires et sous-modules).
+Le concept de « mode » a été repris des mode UNIX, mais est beaucoup moins flexible : ces trois modes sont les seuls valides pour Git, pour les fichiers (blobs) (bien que d'autres modes soient utilisés pour les répertoires et sous-modules).
 
 Vous pouvez maintenant utiliser la commande `write-tree` pour écrire la zone d'attente dans un objet arbre.
 L'option' `-w` est inutile (appeler `write-tree` crée automatiquement un objet arbre à partir de l'état de l'index si cet arbre n'existe pas) :
@@ -208,7 +208,7 @@ Enregistrez cet arbre (c'est-à-dire. enregistrez l'état de la zone d'attente o
 	100644 blob fa49b077972391ad58037050f2a75f74e3671e92      new.txt
 	100644 blob 1f7a7a472abf3dd9643fd615f6da379c4acb3e3a      test.txt
 
-Remarquez que cet arbre contient des entrées pour les deux fichiers et que l'empreinte SHA de test.txt est l'empreinte de la « version 2 » de tout à l'heure (`1f7a7a`).
+Remarquez que cet arbre contient des entrées pour les deux fichiers et que l'empreinte SHA de test.txt est l'empreinte de la « version 2 » de tout à l'heure (`1f7a7a`).
 Pour le plaisir, ajoutez le premier arbre à celui-ci, en tant que sous-répertoire.
 Vous pouvez maintenant récupérer un arbre de votre zone d'attente en exécutant `read-tree`.
 Dans ce cas, vous pouvez récupérer un arbre existant dans votre zone d'attente comme étant un sous-arbre en utilisant l'option `--prefix` de `read-tree` :
@@ -331,7 +331,7 @@ Ensuite, il ajoute un espace suivi de taille du contenu et enfin un octet nul :
 	=> "blob 16\000"
 
 Git concatène l'en-tête avec le contenu original et calcule l'empreinte SHA-1 du nouveau contenu.
-En Ruby, vous pouvez calculer l'empreinte SHA-1 d'une chaîne, en incluant la bibliothèque « digest/SHA-1 » via la commande `require`, puis en appelant `Digest::SHA1.hexdigest()` sur la chaîne :
+En Ruby, vous pouvez calculer l'empreinte SHA-1 d'une chaîne, en incluant la bibliothèque « digest/SHA-1 » via la commande `require`, puis en appelant `Digest::SHA1.hexdigest()` sur la chaîne :
 
 	>> store = header + content
 	=> "blob 16\000what is up, doc?"
@@ -364,7 +364,7 @@ Ensuite, ouvrez le fichier avec `File.open()` et enregistrez le contenu compress
 
 C'est tout !
 Vous venez juste de créer un objet Blob valide.
-Tout les objets Git sont stockés de la même façon, mais avec des types différents : l'en-tête commencera par « *commit* » ou « tree » au lieu de la chaîne « blob ».
+Tout les objets Git sont stockés de la même façon, mais avec des types différents : l'en-tête commencera par « *commit* » ou « tree » au lieu de la chaîne « blob ».
 Bien que le contenu d'un blob puisse être presque n'importe quoi, le contenu  d'un *commit* ou d'un arbre est formaté d'une façon particulière.
 
 ## Références Git ##
@@ -372,7 +372,7 @@ Bien que le contenu d'un blob puisse être presque n'importe quoi, le contenu  d
 On peut exécuter quelque chose comme `git log 1a410e` pour visualiser tout l'historique, mais il faut se souvenir que `1a410e` est le dernier *commit* afin de parcourir l'historique et trouver tous ces objets.
 Vous avez besoin d'un fichier ayant un nom simple qui contient l'empreinte SHA-1 afin d'utiliser ce pointeur plutôt que l'empreinte SHA-1 elle-même.
 
-Git appelle ces pointeur des « références », ou « refs ».
+Git appelle ces pointeur des « références », ou « refs ».
 On trouve les fichiers contenant des empreintes SHA-1 dans le répertoire `git/refs`.
 Dans le projet actuel, ce répertoire ne contient aucun fichier, mais possède une structure simple :
 
@@ -590,7 +590,7 @@ Il y a donc deux objets de 4Ko quasiment identiques sur le disque.
 Ne serait-ce pas bien si Git pouvait enregistrer qu'un objet en entier, le deuxième n'étant qu'un delta (une différence) avec le premier ?
 
 Il se trouve que c'est possible.
-Le format initial dans lequel Git enregistre les objets sur le disque est appelé le format brut ("loose object").
+Le format initial dans lequel Git enregistre les objets sur le disque est appelé le format brut (*loose object*).
 De temps en temps, Git compacte plusieurs de ces objets en un seul fichier binaire appelé packfile (fichier groupé), afin d'économiser de l'espace et d'être plus efficace.
 Git effectue cette opération quand il y a trop d'objets au format brut, ou si l'on exécute manuellement la commande `git gc`, ou encore quand on pousse vers un serveur distant.
 Pour voir cela en action, vous pouvez demander manuellement à Git de compacter les objets en exécutant la commande `git gc` :
@@ -756,7 +756,7 @@ La spécification de référence ressemble à `<src>:<dst>`, mais en laissant vi
 
 ## Protocoles de transfert ##
 
-Git peut transférer des données entre deux dépôts, de deux façons principales : via HTTP et via un protocole dit "intelligent" utilisé par les transports `file://`, `ssh://` et `git://`.
+Git peut transférer des données entre deux dépôts, de deux façons principales : via HTTP et via un protocole dit « intelligent » utilisé par les transports `file://`, `ssh://` et `git://`.
 Cette section fait un tour d'horizon du fonctionnement de ces deux protocoles.
 
 ### Protocole stupide ###
@@ -931,9 +931,9 @@ Dans tous les cas, après que `fetch-pack` se connecte, `upload-pack` lui répon
 C'est très proche de ce que répondait `receive-pack` mais les compétences sont différentes.
 En plus, il vous répond la référence HEAD, afin que le client sache quoi récupérer dans le cas d'un clone.
 
-À ce moment, l'exécutable `fetch-pack` regarde quels objets il a et répond avec les objets dont il a besoin en envoyant "want" (vouloir) suivi du SHA qu'il veut.
-Il envoie tous les objets qu'il a déjà avec "have" suivi du SHA.
-À la fin de la liste, il écrit "done" pour initialiser l'exécutable `upload-pack` à commencer à envoyer le fichier groupé des données demandées :
+À ce moment, l'exécutable `fetch-pack` regarde quels objets il a et répond avec les objets dont il a besoin en envoyant « want » (vouloir) suivi du SHA qu'il veut.
+Il envoie tous les objets qu'il a déjà avec « have » suivi du SHA.
+À la fin de la liste, il écrit « done » pour initialiser l'exécutable `upload-pack` à commencer à envoyer le fichier groupé des données demandées :
 
 	0054want ca82a6dff817ec66f44342007202690a93763949 ofs-delta
 	0032have 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
@@ -952,10 +952,10 @@ Cette section couvrira certains de ces scénarios.
 
 ### Maintenance ###
 
-De temps en temps, Git exécute automatiquement une commande appelée "auto gc".
+De temps en temps, Git exécute automatiquement une commande appelée « auto gc ».
 La plupart du temps, cette commande ne fait rien.
 Cependant, s'il y a trop d'objets bruts (des objets qui ne sont pas dans des fichiers groupés), ou trop de fichiers groupés, Git lance une commande `git gc` à part entière.
-`gc` est l'abréviation pour "garbage collect" (ramasse-miettes) et la commande fait plusieurs choses : elle rassemble plusieurs objets bruts et les place dans un fichiers groupés, elle consolide des fichiers groupés en un gros fichier groupé et elle supprime des objets qui ne sont plus accessibles depuis un *commit* et qui sont vieux de plusieurs mois.
+`gc` est l'abréviation pour « garbage collect » (ramasse-miettes) et la commande fait plusieurs choses : elle rassemble plusieurs objets bruts et les place dans un fichiers groupés, elle consolide des fichiers groupés en un gros fichier groupé et elle supprime des objets qui ne sont plus accessibles depuis un *commit* et qui sont vieux de plusieurs mois.
 
 Vous pouvez exécuter `auto gc` manuellement :
 
@@ -1024,7 +1024,7 @@ Le problème est de trouver ce SHA, ce n'est pas comme si vous l'aviez mémoris�
 Souvent, la manière la plus rapide est d'utiliser l'outil `git reflog`
 Pendant que vous travaillez, Git enregistre l'emplacement de votre HEAD chaque fois que vous le changez.
 À chaque *commit* ou commutation de branche, le journal des références (reflog) est mis à jour.
-Le journal des références est aussi mis à jour par la commande `git update-ref`, qui est une autre raison de l'utiliser plutôt que de simplement écrire votre valeur SHA dans vos fichiers de références, comme mentionné dans la section "Git References" plus haut dans ce chapitre.
+Le journal des références est aussi mis à jour par la commande `git update-ref`, qui est une autre raison de l'utiliser plutôt que de simplement écrire votre valeur SHA dans vos fichiers de références, comme mentionné dans la section « Git References » plus haut dans ce chapitre.
 Vous pouvez voir où vous étiez à n'importe quel moment en exécutant `git reflog` :
 
 	$ git reflog
@@ -1084,7 +1084,7 @@ Si vous l'exécutez avec l'option `--full`, il vous montre tous les objets qui n
 	dangling tree aea790b9a58f6cf6f2804eeac9f0abbe9631e4c9
 	dangling blob 7108f7ecb345ee9d0084193f147cdad4d2998293
 
-Dans ce cas, vous pouvez voir votre *commit* manquant après "dangling commit".
+Dans ce cas, vous pouvez voir votre *commit* manquant après « dangling commit ».
 Vous pouvez le restaurez de la même manière que précédemment, en créant une branche qui référence cette empreinte SHA.
 
 ### Suppression d'objets ###
@@ -1216,7 +1216,7 @@ Voyons combien d'espace vous avez récupéré :
 	garbage: 0
 
 La taille du dépôt regroupé est retombée à 7Ko, ce qui est beaucoup moins que 2Mo.
-Vous pouvez voir dans la valeur "size" que votre gros objet est toujours dans vos objets bruts, il n'est donc pas parti; mais il ne sera plus transféré lors d'une poussée vers un serveur ou un clone, ce qui est l'important dans l'histoire.
+Vous pouvez voir dans la valeur « size » que votre gros objet est toujours dans vos objets bruts, il n'est donc pas parti; mais il ne sera plus transféré lors d'une poussée vers un serveur ou un clone, ce qui est l'important dans l'histoire.
 Si vous voulez réellement, vous pouvez supprimer complètement l'objet en exécutant `git prune --expire`.
 
 ## Résumé ##

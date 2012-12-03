@@ -102,8 +102,8 @@ Si ce fichier n'existait pas auparavant, et que vous lancez la commande `git sta
 	#	LISEZMOI
 	nothing added to commit but untracked files present (use "git add" to track)
 
-Vous pouvez constater que votre nouveau fichier `LISEZMOI` n'est pas en suivi de version, car il apparaît dans la section "Untracked files" de l'état de la copie de travail.
-"Untracked" signifie simplement que Git détecte un fichier qui n'était pas présent dans le dernier instantané ; Git ne le placera sous suivi de version que quand vous lui indiquerez de le faire.
+Vous pouvez constater que votre nouveau fichier `LISEZMOI` n'est pas en suivi de version, car il apparaît dans la section « Untracked files » de l'état de la copie de travail.
+« Untracked » signifie simplement que Git détecte un fichier qui n'était pas présent dans le dernier instantané ; Git ne le placera sous suivi de version que quand vous lui indiquerez de le faire.
 Ce comportement permet de ne pas placer accidentellement sous suivi de version des fichiers binaires générés ou d'autres fichiers que vous ne voulez pas inclure.
 Mais vous voulez inclure le fichier `LISEZMOI` dans l'instantané, alors commençons à suivre ce fichier.
 
@@ -124,7 +124,7 @@ Si vous lancez à nouveau la commande `status`, vous pouvez constater que votre 
 	#	new file:   LISEZMOI
 	#
 
-Vous pouvez affirmer qu'il est indexé car il apparaît dans la section "Changes to be committed" (Modifications à valider).
+Vous pouvez affirmer qu'il est indexé car il apparaît dans la section « Changes to be committed » (Modifications à valider).
 Si vous enregistrez à ce moment, la version du fichier à l'instant où vous lancez `git add` est celle qui appartiendra à l'instantané.
 Vous pouvez vous souvenir que lorsque vous avez précédemment lancé `git init`, vous avez ensuite lancé `git add (fichiers)` — c'était bien sûr pour commencer à placer sous suivi de version les fichiers de votre répertoire de travail.
 La commande `git add` accepte en paramètre un chemin qui correspond à un fichier ou un répertoire ; dans le cas d'un répertoire, la commande ajoute récursivement tous les fichiers de ce répertoire.
@@ -147,7 +147,7 @@ Si vous modifiez le fichier sous suivi de version appelé `benchmarks.rb` et que
 	#	modified:   benchmarks.rb
 	#
 
-Le fichier `benchmarks.rb` apparaît sous la section nommée "Changed but not updated" ce qui signifie que le fichier sous suivi de version a été modifié dans la copie de travail mais n'est pas encore indexé.
+Le fichier `benchmarks.rb` apparaît sous la section nommée « Changed but not updated » ce qui signifie que le fichier sous suivi de version a été modifié dans la copie de travail mais n'est pas encore indexé.
 Pour l'indexer, il faut lancer la commande `git add` (qui est une commande multi-usage — elle peut être utilisée pour placer un fichier sous suivi de version, pour indexer un fichier ou pour d'autres actions telles que marquer comme résolu des conflits de fusion de fichiers).
 Lançons maintenant `git add` pour indexer le fichier `benchmarks.rb`, et relançons la commande `git status` :
 
@@ -786,7 +786,7 @@ Comment annuler l'indexation d'un des fichiers ? La commande `git status` vous 
 	#       modified:   benchmarks.rb
 	#
 
-Juste sous le texte "Changes to be committed", elle vous indique d'utiliser `git reset HEAD <fichier>...` pour désindexer un fichier.
+Juste sous le texte « Changes to be committed », elle vous indique d'utiliser `git reset HEAD <fichier>...` pour désindexer un fichier.
 Utilisons donc ce conseil pour désindexer le fichier `benchmarks.rb` :
 
 
@@ -870,7 +870,7 @@ Si vous avez cloné un dépôt, vous devriez au moins voir l'origine `origin` �
 	$ git remote
 	origin
 
-Vous pouvez aussi spécifier `-v`, qui vous montre l'URL que Git a stocké pour chaque nom court :
+Vous pouvez aussi spécifier `-v`, qui vous montre l'URL que Git a stocké pour chaque nom court :
 
 	$ git remote -v
 	origin  git://github.com/schacon/ticgit.git (fetch)
@@ -1183,7 +1183,7 @@ Supposons que l'historique des *commits* ressemble à ceci :
 	964f16d36dfccde844893cac5b347e7b3d44abbc validation afaire
 	8a5cbc430f1a9c3d00faaeffd07798508422908a mise à jour lisezmoi
 
-Maintenant, supposons que vous avez oublié d'étiqueter le projet à la version `v1.2` qui correspondait au *commit* "mise à jour rakefile".
+Maintenant, supposons que vous avez oublié d'étiqueter le projet à la version `v1.2` qui correspondait au *commit* « mise à jour rakefile ».
 Vous pouvez toujours le faire après l'évènement.
 Pour étiqueter ce *commit*, vous spécifiez la somme de contrôle du *commit* (ou une partie) en fin de commande :
 
