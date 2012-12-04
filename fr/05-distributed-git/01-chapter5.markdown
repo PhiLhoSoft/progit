@@ -793,7 +793,7 @@ Néanmoins, si quelqu'un a déposé un fichier de patch généré via `format-pa
 	Applying:  Ajout d'une limite à la fonction de log
 
 Vous remarquez qu'il s'est appliqué proprement et a créé une nouvelle validation pour vous.
-L'information d'auteur est extraite des entêtes `From` et `Date` tandis que le message de validation est repris du champ `Subject` et du corps (avant le patch) du message.
+L'information d'auteur est extraite des en-têtes `From` et `Date` tandis que le message de validation est repris du champ `Subject` et du corps (avant le patch) du message.
 Par exemple, si le patch est appliqué depuis le fichier mbox ci-dessus, la validation générée ressemblerait à ceci :
 
 	$ git log --pretty=fuller -1

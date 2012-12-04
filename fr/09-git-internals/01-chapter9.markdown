@@ -56,8 +56,8 @@ Vous allez maintenant plonger en détail dans chacune de ces sections et voir co
 
 Git est un système de fichier adressables par contenu.
 Super!
-Mais qu'est-ce que ça veut dire?
-Ça veut dire que le cœur de Git est une simple base de paires clef/valeur.
+Mais qu'est-ce que ça veut dire ?
+Ça veut dire que le cœur de Git est une simple base de paires clé/valeur.
 Vous pouvez y insérer n'importe quelle sorte de données et il vous retournera une clé que vous pourrez utiliser à n'importe quel moment pour récupérer ces données.
 Pour illustrer cela, vous pouvez utiliser la commande de plomberie `hash-object`, qui prend des données, les stocke dans votre répertoire `.git`, puis retourne la clé sous laquelle les données sont stockées.
 Tout d'abord, créez un nouveau dépôt Git et vérifiez que rien ne se trouve dans le répertoire `object` :
@@ -787,7 +787,7 @@ Puisque votre point de départ est l'objet *commit* `ca82a6` que vous avez vu da
 	(179 bytes of binary data)
 
 Vous obtenez un objet, cet objet est dans le format brut sur le serveur et vous l'avez récupéré à travers une requête HTTP GET statique.
-Vous pouvez le décompresser avec zlib, ignorer l'entête et regarder le contenu du *commit* :
+Vous pouvez le décompresser avec zlib, ignorer l'en-tête et regarder le contenu du *commit* :
 
 	$ git cat-file -p ca82a6dff817ec66f44342007202690a93763949
 	tree cfda3bf379e4f8dba8717dee55aab78aef7f4daf

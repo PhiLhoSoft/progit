@@ -225,7 +225,7 @@ ou vous pouvez éditer votre fichier `~/.gitconfig` pour y ajouter ces lignes :
 	  external = extDiff
 
 Après avoir réglé tout ceci, si vous lancez des commandes de diff telles que celle-ci :
-	
+
 	$ git diff 32d1776b1^ 32d1776b1
 
 Au lieu d'obtenir la sortie du diff dans le terminal, Git lance P4Merge, ce qui ressemble à la Figure 7-1.
@@ -239,7 +239,7 @@ Le point agréable avec cette méthode d'enveloppe est que vous pouvez changer f
 Par exemple, pour changer vos outils `extDiff` et `extMerge` pour une utilisation de l'outil KDiff3, il vous suffit d'éditer le fichier `extMerge` :
 
 	$ cat /usr/local/bin/extMerge
-	#!/bin/sh	
+	#!/bin/sh
 	/Applications/kdiff3.app/Contents/MacOS/kdiff3 $*
 
 À présent, Git va utiliser l'outil KDiff3 pour visualiser les différences et résoudre les conflits de fusion.
@@ -471,13 +471,13 @@ Créez un fichier `/usr/local/bin/odt-to-txt` (vous êtes libre de le placer dan
 	#! /usr/bin/env perl
 	# Convertisseur simpliste OpenDocument Text (.odt) vers texte
 	# Author: Philipp Kempgen
-	
+
 	if (! defined($ARGV[0])) {
 		print STDERR "Pas de fichier fourni!\n";
 		print STDERR "Usage: $0 [nom du fichier]\n";
 		exit 1;
 	}
-	
+
 	my $content = '';
 	open my $fh, '-|', 'unzip', '-qq', '-p', $ARGV[0], 'content.xml' or die $!;
 	{
@@ -807,7 +807,7 @@ Tous les scripts d'exemple distribués avec Git sont soit en Perl soit en Bash, 
 Toutes les actions côté serveur seront contenues dans le fichier `update` dans le répertoire `hooks`.
 Le fichier `update` s'exécute une fois par branche poussée et accepte comme paramètre la référence sur laquelle on pousse, l'ancienne révision de la branche et la nouvelle révision de la branche.
 Vous pouvez aussi avoir accès à l'utilisateur qui pousse si la poussée est réalisée par SSH.
-Si vous avez permis à tout le monde de se connecter avec un utilisateur unique (comme « git ») avec une authentification à clef publique, il vous faudra fournir à cet utilisateur une enveloppe de shell qui déterminera l'identité de l'utilisateur à partir de sa clef publique et positionnera une variable d'environnement spécifiant cette identité.
+Si vous avez permis à tout le monde de se connecter avec un utilisateur unique (comme « git ») avec une authentification à clé publique, il vous faudra fournir à cet utilisateur une enveloppe de shell qui déterminera l'identité de l'utilisateur à partir de sa clé publique et positionnera une variable d'environnement spécifiant cette identité.
 Ici, je considère que la variable d'environnement `$USER` indique l'utilisateur connecté, donc le script update commence par rassembler toutes les informations nécessaires :
 
 	#!/usr/bin/env ruby
