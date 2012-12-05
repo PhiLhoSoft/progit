@@ -85,7 +85,7 @@ si on fait référence à l'action, on peut traduire.
  - mixed reset ->
 * bisect -> bissecter
 * archive -> archiver
-* cherry-pick -> sélectionner (a été préféré à "cueillir")
+* cherry-pick -> sélectionner (a été préféré à "cueillir")(vu au chapitre 5: "picorer")
 * cherry-picking -> sélection (préféré à "cueillette")
 * clean -> nettoyer
 * clone -> cloner
@@ -104,5 +104,5 @@ si on fait référence à l'action, on peut traduire.
 * hook -> crochet
 * namespace -> espace de noms
 * Content-addressable filesystem -> système de fichier adressable par le contenu
-* DAG(Direct Acyclic Graph) -> Graphe orienté acyclique
+* DAG (Direct Acyclic Graph) -> Graphe orienté acyclique
 * pattern -> motif

@@ -55,7 +55,7 @@ Figure 5-2. Le mode du gestionnaire d'intégration
 
 C'est une gestion très commune sur des sites tels que GitHub où il est aisé de dupliquer un projet et de pousser ses modifications pour les rendre publiques.
 Un avantage distinctif de cette approche est qu'il devient possible de continuer à travailler et que le mainteneur du dépôt principal peut tirer les modifications à tout moment.
-Les contributeurs n'ont pas à attendre le bon-vouloir du mainteneur pour incorporer leurs modifications.
+Les contributeurs n'ont pas à attendre le bon vouloir du mainteneur pour incorporer leurs modifications.
 Chaque acteur peut travailler à son rythme.
 
 ### Mode dictateur et ses lieutenants ###
@@ -65,7 +65,7 @@ En général, ce mode est utilisé sur des projets immenses comprenant des centa
 Un exemple connu en est le noyau Linux.
 Des gestionnaires d'intégration gèrent certaines parties du projet.
 Ce sont les lieutenants.
-Tous les lieutenants ont un unique gestionnaire d'intégration, le dictateur bénévole.
+Tous les lieutenants ont un unique gestionnaire d'intégration, le dictateur bienviellant.
 Le dépôt du dictateur sert de dépôt de référence à partir duquel tous les collaborateurs doivent tirer.
 Le processus se déroule comme suit (voir figure 5-3) :
 
@@ -75,7 +75,7 @@ Le processus se déroule comme suit (voir figure 5-3) :
 4.      Le dictateur pousse sa branche `master` sur le dépôt de référence pour que les développeurs se rebasent dessus.
 
 Insert 18333fig0503.png
-Figure 5-3. Le processus du dictateur bénévole.
+Figure 5-3. Le processus du dictateur bienviellant.
 
 Ce schéma de processus n'est pas très utilisé mais s'avère utile dans des projets très gros ou pour lesquels un ordre hiérarchique existe, car il permet au chef de projet (le dictateur) de déléguer une grande partie du travail et de collecter de grands sous-ensembles de codes à différents points avant de les intégrer.
 
@@ -121,7 +121,7 @@ Vous devriez pouvoir construire vos propres modes de gestion à partir de ces ex
 
 Avant de passer en revue les cas d'utilisation spécifiques, voici un point rapide sur les messages de validation.
 La définition et l'utilisation d'une bonne ligne de conduite sur les messages de validation facilitent grandement l'utilisation de Git et la collaboration entre développeurs.
-Le projet Git fournit un document qui décrit un certain nombre de bonnes pratiques pour créer des *commits* qui serviront à fournir des patchs — le document est accessibles dans les sources de Git, dans le fichier `Documentation/SubmittingPatches`.
+Le projet Git fournit un document qui décrit un certain nombre de bonnes pratiques pour créer des *commits* qui serviront à fournir des patchs — le document est accessible dans les sources de Git, dans le fichier `Documentation/SubmittingPatches`.
 
 Premièrement, il ne faut pas soumettre de patchs comportant des erreurs d'espace (caractères espace inutiles en fin de ligne).
 Git fournit un moyen simple de le vérifier — avant de valider, lancez la commande `git diff --check` qui identifiera et listera les erreurs d'espace.
@@ -152,29 +152,28 @@ Un bonne règle consiste aussi à utiliser le présent de l'impératif ou des ve
 En d'autres termes, utilisez des ordres.
 Au lieu d'écrire « J'ai ajouté des tests pour » ou « En train d'ajouter des tests pour », utilisez juste « Ajoute des tests pour » ou « Ajout de tests pour ».
 
-Voici ci-dessous un modèle tiré de celui écrit par Tim Pope at tpope.net :
+Voici ci-dessous un modèle écrit par Tim Pope at tpope.net :
 
+	Court résumé des modifications (50 caractères ou moins)
 
-	Court résumé des modifications( 50 caractères ou moins)
-
-	Explication plus détaillée si nécessaire. Retour à la ligne vers 72
+	Explication plus détaillée, si nécessaire. Retour à la ligne vers 72
 	caractères. Dans certains contextes, la première ligne est traitée
 	comme le sujet d'un e-mail et le reste comme le corps. La ligne
 	vide qui sépare le titre du corps est importante (à moins d'omettre
-	totalement le corps). Des outils tels que rebase peuvent être gênés
+	totalement le corps). Des outils tels que `rebase` peuvent être gênés
 	si vous les laissez collés.
 
 	Paragraphes supplémentaires après des lignes vides.
 
-	 - les listes à puce sont  aussi acceptées
+	 - les listes à puce sont aussi acceptées
 
-	 - Typiquement, un tiret ou un astérisk précédés d'un espace unique
+	 - Typiquement, un tiret ou un astérisque précédés d'un espace unique
 	   séparés par des lignes vides mais les conventions peuvent varier
 
 Si tous vos messages de validation ressemblent à ceci, les choses seront beaucoup plus simples pour vous et les développeurs avec qui vous travaillez.
 Le projet Git montre des messages de *commit* bien formatés — je vous encourage à y lancer un `git log --no-merges` pour pouvoir voir comment rend un historique de messages bien formatés.
 
-Dans les exemples suivants et à travers tout ce livre, par soucis de simplification, je ne formaterai pas les messages aussi proprement.
+Dans les exemples suivants et à travers tout ce livre, par souci de simplification, je ne formaterai pas les messages aussi proprement.
 J'utiliserai plutôt l'option `-m` de `git commit`.
 Faites ce que je dis, pas ce que je fais.
 
@@ -301,7 +300,7 @@ Elle lance `git log` pour s'en assurer :
 
 	    Eliminer une valeur par defaut invalide
 
-Maintenant, Jessica peut fusionner sa branche thématique dans sa branche `master`, fusionner le travail de John (`origin/master`)dans sa branche `master`, puis pousser le résultat sur le serveur.
+Maintenant, Jessica peut fusionner sa branche thématique dans sa branche `master`, fusionner le travail de John (`origin/master`) dans sa branche `master`, puis pousser le résultat sur le serveur.
 Premièrement, elle rebascule sur sa branche `master` pour intégrer son travail :
 
 	$ git checkout master
@@ -348,7 +347,7 @@ Insert 18333fig0510.png
 Figure 5-10. L'historique de Jessica après avoir poussé toutes ses modifications sur le serveur.
 
 C'est un des schéma les plus simples.
-Vous travaillez pendant quelques temps, généralement sur une branche thématique, et fusionnez dans votre branche `master` quand elle est prête à être intégrée.
+Vous travaillez pendant quelque temps, généralement sur une branche thématique, et fusionnez dans votre branche `master` quand elle est prête à être intégrée.
 Quand vous souhaitez partager votre travail, vous récupérez `origin/master` et la fusionnez si elle a changé, puis finalement vous poussez le résultat sur la branche `master` du serveur.
 La séquence est illustrée par la figure 5-11.
 
@@ -365,7 +364,7 @@ Dans ce cas, l'entreprise utilise un mode d'opération de type « gestionnaire 
 Dans ce scénario, tout le travail est validé dans des branches orientées équipe, et tiré plus tard par les intégrateurs.
 
 Suivons le cheminement de Jessica tandis qu'elle travaille sur les deux nouvelles fonctionnalités, collaborant en parallèle avec deux développeurs différents dans cet environnement.
-En supposant qu'elle a cloné son dépôt, elle décide de travailler sur la `fonctionA` en premier.
+En supposant qu'elle ait cloné son dépôt, elle décide de travailler sur la `fonctionA` en premier.
 Elle crée une nouvelle branche pour cette fonction et travaille un peu dessus :
 
 	# Ordinateur de Jessica
@@ -527,7 +526,7 @@ Si le mainteneur fusionne, rebase ou picore votre travail, vous le saurez en tir
 	$ git push macopie fonctionA
 
 Une fois votre travail poussé sur votre copie du dépôt, vous devez notifier le mainteneur.
-Ce processus est souvent appelé une demande de tirage (pull request) et vous pouvez la générer soit via le site web — GitHub propose un bouton « pull request » qui envoie automatiquement un message au mainteneur — soit lancer la commande `git request-pull` et envoyer manuellement par e-mail le résultat au mainteneur de projet.
+Ce processus est souvent appelé une demande de tirage (*pull request*) et vous pouvez la générer soit via le site web — GitHub propose un bouton « pull request » qui envoie automatiquement un message au mainteneur — soit lancer la commande `git request-pull` et envoyer manuellement par e-mail le résultat au mainteneur de projet.
 
 La commande `request-pull` prend en  paramètres la branche de base dans laquelle vous souhaitez que votre branche thématique soit fusionnée et l'URL du dépôt Git depuis lequel vous souhaitez qu'elle soit tirée, et génère un résumé des modifications que vous demandez à faire tirer.
 Par exemple, si Jessica envoie à John une demande de tirage et qu'elle a fait deux validations dans la branche thématique qu'elle vient de pousser, elle peut lancer ceci :
@@ -597,7 +596,6 @@ Cela permet de reporter toutes les modifications d'une autre branche, puis de r�
 
 À présent, vous pouvez envoyer au mainteneur un message indiquant que vous avez réalisé les modifications demandées et qu'il peut trouver cette nouvelle mouture sur votre branche `fonctionBv2` (voir figure 5-18).
 
-
 Insert 18333fig0518.png
 Figure 5-18. Historique des validations après le travail sur fonctionBv2.
 
@@ -657,15 +655,15 @@ Le contenu des fichiers ressemble à ceci :
 	--
 	1.6.2.rc1.20.g8c5b.dirty
 
-Vous pouvez maintenant éditer ces fichiers de patch pour ajouter plus d'information à destination de la liste de diffusion mais que vous ne souhaitez par voir apparaître dans le message de validation.
+Vous pouvez maintenant éditer ces fichiers de patch pour ajouter plus d'informations à destination de la liste de diffusion mais que vous ne souhaitez pas voir apparaître dans le message de validation.
 Si vous ajoutez du texte entre la ligne `--` et le début du patch (la ligne `lib/simplegit.rb`), les développeurs peuvent le lire mais l'application du patch ne le prend pas en compte.
 
-Pour envoyer par e-mail ces fichiers, vous pouvez soit copier leur contenu dans votre application d'e-mail ou l'envoyer via une ligne de commande.
+Pour envoyer par e-mail ces fichiers, vous pouvez soit copier leur contenu dans votre application d'e-mail, soit l'envoyer via une ligne de commande.
 Le copier-coller cause souvent des problèmes de formatage, spécialement avec les applications « intelligentes » qui ne préservent pas les retours à la ligne et les types d'espace.
 Heureusement, Git fournit un outil pour envoyer correctement les patchs formatés via IMAP, la méthode la plus facile.
-Je démontrerai comment envoyer un patch via Gmail qui s'avère être la boite mail que j'utilise ; vous pourrez trouver des instructions détaillées pour de nombreuses applications de mail à la fin du fichier susmentionné `Documentation/SubmittingPatches` du code source de Git.
+Je démontrerai comment envoyer un patch via Gmail qui s'avère être la boîte mail que j'utilise ; vous pourrez trouver des instructions détaillées pour de nombreuses applications de mail à la fin du fichier susmentionné `Documentation/SubmittingPatches` du code source de Git.
 
-Premièrement, il est nécessaire de paramétrer la section imap de votre fichier `~/.gitconfig`.
+Premièrement, il est nécessaire de paramétrer la section `imap` de votre fichier `~/.gitconfig`.
 Vous pouvez positionner ces valeurs séparément avec une série de commandes `git config`, ou vous pouvez les ajouter manuellement.
 À la fin, le fichier de configuration doit ressembler à ceci :
 
@@ -688,7 +686,7 @@ Quand c'est fait, vous pouvez utiliser la commande `git send-email` pour placer 
 	Who should the emails be sent to? jessica@example.com
 	Message-ID to be used as In-Reply-To for the first email? y
 
-La première question demande l'adresse mail d'origine (avec par défaut celle saisie en config), tandis que la seconde demande les destinataires.
+La première question demande l'adresse e-mail d'origine (avec par défaut celle saisie en config), tandis que la seconde demande les destinataires.
 Enfin la dernière question sert à indiquer que l'on souhaite poster la série de patchs comme une réponse au premier patch de la série, créant ainsi un fil de discussion unique pour cette série.
 Ensuite, Git crache un certain nombre d'informations qui ressemblent à ceci pour chaque patch à envoyer :
 
@@ -711,9 +709,9 @@ Ensuite, Git crache un certain nombre d'informations qui ressemblent à ceci pou
 
 ### Résumé ###
 
-Ce chapitre a traité quelques unes des méthodes communes de gestion de types différents de projets Git que vous pourrez rencontrer et a introduit un certain nombre de nouveaux outils pour vous aider à gérer ces processus.
+Ce chapitre a traité quelques-unes des méthodes communes de gestion de types différents de projets Git que vous pourrez rencontrer et a introduit un certain nombre de nouveaux outils pour vous aider à gérer ces processus.
 Dans la section suivante, nous allons voir comment travailler de l'autre côté de la barrière : en tant que mainteneur de projet Git.
-Vous apprendrez comment travailler comme dictateur bénévole ou gestionnaire d'intégration.
+Vous apprendrez comment travailler comme dictateur bienviellant ou gestionnaire d'intégration.
 
 ## Maintenance d'un projet ##
 
@@ -742,7 +740,7 @@ Vous voilà maintenant prêt à ajouter les modifications sur cette branche thé
 Si vous recevez par e-mail un patch que vous devez intégrer à votre projet, vous avez besoin d'appliquer le patch dans une branche thématique pour l'évaluer.
 Il existe deux méthodes pour appliquer un patch envoyé par e-mail : `git apply` et `git am`.
 
-#### Application d'un patch avec apply ####
+#### Application d'un patch avec `apply` ####
 
 Si vous avez reçu le patch de quelqu'un qui l'a généré avec la commande `git diff` ou `diff` Unix, vous pouvez l'appliquer avec la commande `git apply`.
 Si le patch a été sauvé comme fichier `/tmp/patch-ruby-client.patch`, vous pouvez l'appliquer comme ceci :
@@ -752,7 +750,7 @@ Si le patch a été sauvé comme fichier `/tmp/patch-ruby-client.patch`, vous po
 Les fichiers dans votre copie de travail sont modifiés.
 C'est quasiment identique à la commande `patch -p1` qui applique directement les patchs mais en plus paranoïaque et moins tolérant sur les concordances approximatives.
 Les ajouts, effacements et renommages de fichiers sont aussi gérés s'ils sont décrits dans le format `git diff`, ce que `patch` ne supporte pas.
-Enfin, `git apply` fonctionne en mode « applique tout ou refuse tout » dans lequel toutes les modifications proposées sont appliquées si elles le peuvent, sinon rien n'est modifié là où `patch` peut n'appliquer que partiellement les patchs, laissant le répertoire de travail dans un état intermédiaire.
+Enfin, `git apply` fonctionne en mode « applique tout ou refuse tout » dans lequel toutes les modifications proposées sont appliquées si elles le peuvent, sinon rien n'est modifié, là où `patch` peut n'appliquer que partiellement les patchs, laissant le répertoire de travail dans un état intermédiaire.
 `git apply` est par dessus tout plus paranoïaque que `patch`.
 Il ne créera pas une validation à votre place : après l'avoir lancé, vous devrez indexer et valider les modifications manuellement.
 
@@ -765,7 +763,7 @@ Vous pouvez aussi utiliser `git apply` pour voir si un patch s'applique propreme
 S'il n'y pas de message, le patch devrait s'appliquer proprement.
 Cette commande se termine avec un statut non-nul si la vérification échoue et vous pouvez donc l'utiliser dans des scripts.
 
-#### Application d'un patch avec am ####
+#### Application d'un patch avec `am` ####
 
 Si le contributeur est un utilisateur de Git qui a été assez gentil d'utiliser la commande `format-patch` pour générer ses patchs, votre travail sera facilité car le patch contient alors déjà l'information d'auteur et le message de validation.
 Si possible, encouragez vos contributeurs à utiliser `format-patch` au lieu de `patch` pour générer les patchs qu'ils vous adressent.
@@ -948,7 +946,7 @@ C'est une syntaxe très simple à retenir.
 
 Lorsque tout le travail de votre branche thématique est prêt à être intégré dans la branche principale, il reste à savoir comment le faire.
 De plus, il faut connaître le mode de gestion que vous souhaitez pour votre projet.
-Vous avez de nombreux choix et je vais en traiter quelques uns.
+Vous avez de nombreux choix et je vais en traiter quelques-uns.
 
 #### Modes de fusion ####
 
@@ -980,7 +978,7 @@ Figure 5-22. Après la fusion d'une branche thématique.
 Insert 18333fig0523.png
 Figure 5-23. Après une publication d'une branche thématique.
 
-Ainsi, lorsque l'on clone le dépôt de votre projet, on peut soit extraire la branche `master` pour construire la dernière version stable et mettre à jour facilement ou on peut extraire le branche develop qui représente le nec plus ultra du développement.
+Ainsi, lorsque l'on clone le dépôt de votre projet, on peut soit extraire la branche `master` pour construire la dernière version stable et mettre à jour facilement ou on peut extraire la branche `develop` qui représente le nec plus ultra du développement.
 
 Vous pouvez aussi continuer ce concept avec une branche d'intégration où tout le travail est fusionné.
 Alors, quand la base de code sur cette branche est stable et que les tests passent, vous la fusionnez dans la branche `develop`.
@@ -988,7 +986,7 @@ Quand cela s'est avéré stable pendant un certain temps, vous mettez à jour la
 
 #### Gestions avec nombreuses fusions ####
 
-Le projet Git dispose de quatre branches au long cours : `master`, `next`, `pu` (proposed updates : propositions) pour les nouveaux travaux et `maint` pour les backports de maintenance.
+Le projet Git dispose de quatre branches au long cours : `master`, `next`, `pu` (*proposed updates* : propositions) pour les nouveaux travaux et `maint` pour les backports de maintenance.
 Quand une nouvelle contribution est proposée, elle est collectée dans des branches thématiques dans le dépôt du mainteneur d'une manière similaire à ce que j'ai décrit (voir figure 5-24).
 À ce point, les fonctionnalités sont évaluées pour déterminer si elles sont stables et prêtes à être consommées ou si elles nécessitent un peaufinage.
 Si elles sont stables, elles sont fusionnées dans `next` et cette branche est poussée sur le serveur public pour que tout le monde puisse essayer les fonctionnalités intégrées ensemble.
@@ -997,7 +995,7 @@ Insert 18333fig0524.png
 Figure 5-24. Série complexe de branches thématiques contribuées en parallèle.
 
 Si les fonctionnalités nécessitent encore du travail, elles sont fusionnées plutôt dans `pu`.
-Quand elles sont considérées comme totalement stables, elles sont re-fusionnées dans `master` et sont alors reconstruites à partir fonctionnalités qui résidaient dans `next` mais n'ont pu intégrer `master`.
+Quand elles sont considérées comme totalement stables, elles sont re-fusionnées dans `master` et sont alors reconstruites à partir des fonctionnalités qui résidaient dans `next` mais n'ont pu intégrer `master`.
 Cela signifie que `master` évolue quasiment toujours en mode avance rapide, tandis que `next` est rebasé assez souvent et `pu` est rebasé encore plus souvent (voir figure 5-25).
 
 Insert 18333fig0525.png
@@ -1005,25 +1003,25 @@ Figure 5-25. Fusion des branches thématiques dans les branches à long terme.
 
 Quand une branche thématique a finalement été fusionnée dans `master`, elle est effacée du dépôt.
 Le projet Git a aussi une branche `maint` qui est créée à partir de la dernière version pour fournir des patchs correctifs en cas de besoin de version de maintenance.
-Ainsi, quand vous clonez le dépôt de Git, vous avez quatre branches disponibles pour évaluer le projet à différentes étapes de développement, selon le niveau développement que vous souhaitez utiliser ou pour lequel vous souhaitez contribuer.
+Ainsi, quand vous clonez le dépôt de Git, vous avez quatre branches disponibles pour évaluer le projet à différentes étapes de développement, selon le niveau de développement que vous souhaitez utiliser ou pour lequel vous souhaitez contribuer.
 Le mainteneur a une gestion structurée qui lui permet d'évaluer et sélectionner les nouvelles contributions.
 
 #### Gestion par rebasage et sélection de *commit* ####
 
 D'autres mainteneurs préfèrent rebaser ou sélectionner les contributions sur le sommet de la branche `master`, plutôt de les fusionner, de manière à conserver un historique à peu près linéaire.
-Lorsque plusieurs modifications sont présentes dans une branche thématique et que vous souhaitez les intégrer, vous vous placez sur cette branche et vous lancer la commande rebase pour reconstruire les modifications à partir du sommet courant de la branche `master` (ou `develop`, ou autre).
+Lorsque plusieurs modifications sont présentes dans une branche thématique et que vous souhaitez les intégrer, vous vous placez sur cette branche et vous lancer la commande `rebase` pour reconstruire les modifications à partir du sommet courant de la branche `master` (ou `develop`, ou autre).
 Si cela fonctionne correctement, vous pouvez faire une avance rapide sur votre branche `master` et vous obtenez au final un historique de projet linéaire.
 
 L'autre moyen de déplacer des modifications introduites dans une branche vers une autre consiste à les sélectionner (`cherry-pick`).
 Une sélection dans Git ressemble à un rebasage appliqué à un *commit* unique.
 Cela consiste à prendre le patch qui a été introduit lors d'une validation et à essayer de l'appliquer sur la branche sur laquelle on se trouve.
-C'est très utile si on a un certain nombre de *commits* sur une branche thématique et que l'on veut n'en intégrer qu'un seul, ou si on n'a qu'un *commit* sur une branche thématique et qu'on préfère le sélectionner plutôt que de lancer rebase.
+C'est très utile si on a un certain nombre de *commits* sur une branche thématique et que l'on veut n'en intégrer qu'un seul, ou si on n'a qu'un *commit* sur une branche thématique et qu'on préfère le sélectionner plutôt que de lancer `rebase`.
 Par exemple, supposons que vous ayez un projet ressemblant à la figure 5-26.
 
 Insert 18333fig0526.png
 Figure 5-26. Historique d'exemple avant une sélection.
 
-Si vous souhaitez tirer le *commit* `e43a6` dans votre branche `master`, vous pouvez lancer
+Si vous souhaitez tirer le *commit* `e43a6` dans votre branche `master`, vous pouvez lancer :
 
 	$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
 	Finished one cherry-pick.
@@ -1040,7 +1038,7 @@ Maintenant, vous pouvez effacer votre branche thématique et abandonner les *com
 
 ### Étiquetage de vos publications ###
 
-Quand vous décidez d'arrêter une publication de votre projet, vous souhaiterez probablement étiqueter le projet pour pouvoir recréer cette version dans le futur.
+Quand vous décidez de créer une publication de votre projet, vous souhaiterez probablement étiqueter le projet pour pouvoir recréer cette version dans le futur.
 Vous pouvez créer une nouvelle étiquette telle que décrite au chapitre 2.
 Si vous décidez de signer l'étiquette en tant que mainteneur, la commande ressemblera à ceci :
 
@@ -1060,7 +1058,7 @@ Pour faire de même, vous déterminez la clé de votre trousseau que vous voulez
 	uid                  Scott Chacon <schacon@gmail.com>
 	sub   2048g/45D02282 2009-02-09 [expires: 2010-02-09]
 
-Ensuite, vous pouvez importer la clé directement dans la base de donnée Git en l'exportant de votre trousseau et en la redirigeant dans `git hash-object` qui écrit une nouveau blob avec son contenu dans Git et vous donne en sortie le SHA-1 du blob :
+Ensuite, vous pouvez importer la clé directement dans la base de donnée Git en l'exportant de votre trousseau et en la redirigeant dans `git hash-object` qui écrit un nouveau blob avec son contenu dans Git et vous donne en sortie le SHA-1 du blob :
 
 	$ gpg -a --export F721C45A | git hash-object -w --stdin
 	659ef797d181633c87ec71ac3f9ba29fe5775b92
@@ -1091,7 +1089,7 @@ Si vous demandez la description d'un instantané qui a été étiqueté, le nom 
 
 La commande `git describe` repose sur les étiquettes annotées (étiquettes créées avec les options `-a` ou `-s`).
 Les étiquettes de publication doivent donc être créées de cette manière si vous souhaitez utiliser `git describe` pour garantir que les *commits* seront décrits correctement.
-vous pouvez aussi utiliser ces noms comme cible lors d'une extraction ou d'une commande `show`, bien qu'ils reposent sur le SHA-1 abrégé et pourraient ne pas rester valide indéfiniment.
+Vous pouvez aussi utiliser ces noms comme cible lors d'une extraction ou d'une commande `show`, bien qu'ils reposent sur le SHA-1 abrégé et pourraient ne pas rester valide indéfiniment.
 Par exemple, le noyau Linux a sauté dernièrement de 8 à 10 caractères pour assurer l'unicité des objets SHA-1 et les anciens noms `git describe` sont par conséquent devenus invalides.
 
 ### Préparation d'une publication ###

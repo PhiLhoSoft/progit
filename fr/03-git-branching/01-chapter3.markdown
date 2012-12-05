@@ -661,8 +661,8 @@ Figure 3-30. Avance rapide sur la branche `master`.
 Il n'y a pas de différence entre les résultats des deux types d'intégration, mais rebaser rend l'historique plus clair.
 Si vous examinez le journal de la branche rebasée, elle est devenue linéaire : toutes les modifications apparaissent en série même si elles ont eu lieu en parallèle.
 
-Vous aurez souvent à rebaser pour vous assurer que les retouches que vous envoyez s'appliquent correctement sur une branche distante — par exemple, sur un projet où vous souhaitez contribuer mais que vous ne maintenez pas.
-Dans ce cas, vous réaliseriez votre travail dans une branche puis vous rebaseriez votre travail sur `origin/master` quand vous êtes prêt à soumettre vos correctifs au projet principal.
+Vous aurez souvent à rebaser pour vous assurer que les patchs que vous envoyez s'appliquent correctement sur une branche distante — par exemple, sur un projet où vous souhaitez contribuer mais que vous ne maintenez pas.
+Dans ce cas, vous réaliseriez votre travail dans une branche puis vous rebaseriez votre travail sur `origin/master` quand vous êtes prêt à soumettre vos patchs au projet principal.
 De cette manière, le mainteneur n'a pas à réaliser de travail d'intégration — juste une avance rapide ou simplement une application propre.
 
 Il faut noter que l'instantané pointé par le *commit* final, qu'il soit le dernier des *commits* d'une opération de rebase ou le *commit* final issu d'une fusion, sont en fait le même instantané — c'est juste que l'historique est différent.
@@ -684,7 +684,7 @@ Vous pouvez récupérer les modifications pour le côté client qui ne sont pas 
 
 	$ git rebase --onto master serveur client
 
-Cela signifie en essence « Extrait la branche client, détermine les retouches depuis l'ancêtre commun des branches `client` et `serveur` puis rejoue les sur `master` ».
+Cela signifie en essence « Extrait la branche client, détermine les patchs depuis l'ancêtre commun des branches `client` et `serveur` puis rejoue les sur `master` ».
 C'est assez complexe, mais le résultat visible sur la figure 3-32 est assez impressionnant.
 
 Insert 18333fig0332.png
@@ -699,7 +699,7 @@ Insert 18333fig0333.png
 Figure 3-33. Avance rapide sur votre branche `master` pour inclure les modifications de la branche client.
 
 Supposons que vous décidiez de tirer votre branche `serveur` aussi.
-Vous pouvez rebaser la branche `serveur` sur la branche `master` sans avoir à l'extraire avant en utilisant `git rebase (branchedebase) (branchedesujet)` — qui extrait la branche thématique (dans notre cas, `serveur`) pour vous et la rejoue sur la branche de base (`master`) :
+Vous pouvez rebaser la branche `serveur` sur la branche `master` sans avoir à l'extraire avant en utilisant `git rebase [branchedebase] [branchedesujet]` — qui extrait la branche thématique (dans notre cas, `serveur`) pour vous et la rejoue sur la branche de base (`master`) :
 
 	$ git rebase master serveur
 

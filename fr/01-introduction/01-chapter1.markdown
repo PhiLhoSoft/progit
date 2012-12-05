@@ -17,7 +17,7 @@ De plus, vous obtenez tous ces avantages avec peu de travail additionnel.
 
 ### Les systèmes de gestion de version locaux ###
 
-La méthode commune pour la gestion de version est généralement de recopier les fichiers dans un autre répertoire (peut-être avec un nom incluant la date dans le meilleur des cas).
+La méthode courante pour la gestion de version est généralement de recopier les fichiers dans un autre répertoire (peut-être avec un nom incluant la date dans le meilleur des cas).
 Cette méthode est la plus courante parce que c'est la plus simple, mais c'est aussi la moins fiable.
 Il est facile d'oublier le répertoire dans lequel vous êtes et d'écrire accidentellement dans le mauvais fichier ou d'écraser des fichiers que vous vouliez conserver.
 
@@ -28,7 +28,7 @@ Figure 1-1. Diagramme des systèmes de gestion de version locaux.
 
 Un des systèmes les plus populaires était RCS, qui est encore distribué avec de nombreux systèmes d'exploitation aujourd'hui.
 Même le système d'exploitation populaire Mac OS X inclut le programme `rcs` lorsqu'on installe les outils de développement logiciel.
-Cet outil fonctionne en conservant des ensembles de patch (c'est-à-dire la différence entre les fichiers) d'une version à l'autre dans un format spécial sur disque ;
+Cet outil fonctionne en conservant des ensembles de patchs (c'est-à-dire la différence entre les fichiers) d'une version à l'autre dans un format spécial sur disque ;
 il peut alors restituer l'état de n'importe quel fichier à n'importe quel instant en ajoutant toutes les différences.
 
 ### Les systèmes de gestion de version centralisés ###
@@ -68,7 +68,7 @@ Cela permet la mise en place de différentes chaînes de traitement qui ne sont 
 
 Comme de nombreuses choses extraordinaires de la vie, Git est né avec une dose de destruction créative et de controverse houleuse.
 Le noyau Linux est un projet libre de grande envergure.
-Pour la plus grande partie de sa vie (1991—2002), les modifications étaient transmises sous forme de patchs et d'archives de fichiers.
+Pour la plus grande partie de sa vie (1991-2002), les modifications étaient transmises sous forme de patchs et d'archives de fichiers.
 En 2002, le projet du noyau Linux commença à utiliser un DVCS propriétaire appelé BitKeeper.
 
 En 2005, les relations entre la communauté développant le noyau Linux et la société en charge du développement de BitKeeper furent rompues, et le statut de gratuité de l'outil fut révoqué.

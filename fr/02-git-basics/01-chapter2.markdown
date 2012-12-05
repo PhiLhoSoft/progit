@@ -28,7 +28,7 @@ Vous pouvez réaliser ceci avec une poignée de commandes `git add` qui spécifi
 
 	$ git add *.c
 	$ git add README
-	$ git commit —m 'version initiale du projet'
+	$ git commit -m 'version initiale du projet'
 
 Nous allons passer en revue ce que ces commandes font dans une petite minute.
 Pour l'instant, vous avez un dépôt git avec des fichiers sous gestion de version et une validation initiale.
@@ -234,7 +234,7 @@ Voici un autre exemple de fichier `.gitignore` :
 ### Inspecter les modifications indexées et non indexées ###
 
 Si le résultat de la commande `git status` est encore trop vague — lorsqu'on désire savoir non seulement quels fichiers ont changé mais aussi ce qui a changé dans ces fichiers — on peut utiliser la commande `git diff`.
-Cette commande sera traitée en détail plus loin ; mais elle sera vraisemblablement utilisée le plus souvent pour répondre aux questions suivantes : qu'est-ce qui a été modifié mais pas encore indexé ? Quelle modification a été indexée et est prête pour la validation ? Là où `git status` répond de manière générale à ces questions, `git diff` montre les lignes exactes qui ont été ajoutées, modifiées ou effacées — la retouche (*patch* en anglais) en somme.
+Cette commande sera traitée en détail plus loin ; mais elle sera vraisemblablement utilisée le plus souvent pour répondre aux questions suivantes : qu'est-ce qui a été modifié mais pas encore indexé ? Quelle modification a été indexée et est prête pour la validation ? Là où `git status` répond de manière générale à ces questions, `git diff` montre les lignes exactes qui ont été ajoutées, modifiées ou effacées — le patch en somme.
 
 Supposons que vous éditez et indexez le fichier `LISEZMOI` et que vous éditez le fichier `benchmarks.rb` sans l'indexer.
 Si vous lancez la commande `status`, vous verrez ceci :
@@ -653,7 +653,7 @@ Le tableau 2-1 liste les options de formatage les plus utiles.
 
 Vous pourriez vous demander quelle est la différence entre _auteur_  et _validateur_.
 L'_auteur_ est la personne qui a réalisé initialement le travail, alors que le _validateur_ est la personne qui a effectivement validé ce travail en gestion de version.
-Donc, si quelqu'un envoie un correctif à un projet et un des membres du projet l'applique, les deux personnes reçoivent le crédit — l'écrivain en tant qu'auteur, et le membre du projet en tant que validateur.
+Donc, si quelqu'un envoie un patch à un projet et un des membres du projet l'applique, les deux personnes reçoivent le crédit — l'écrivain en tant qu'auteur, et le membre du projet en tant que validateur.
 Nous traiterons plus avant de cette distinction au chapitre 5.
 
 Les options `oneline` et `format` sont encore plus utiles avec une autre option `log` appelée `--graph`.
@@ -727,7 +727,7 @@ Par exemple, si vous souhaitez visualiser quels *commits* modifiant les fichiers
 	51a94af — Fix "checkout --track -b newbranch" on detac
 	b0ad11e — pull: allow "git pull origin $something:$cur
 
-À partir des 20 000 *commits* constituant l'historique des sources de Git, cette commande extrait les 6 qui correspondent aux critères.
+À partir des 20 000 *commits* constituant l'historique des sources de Git, cette commande extrait les 6 qui correspondent aux critères.
 
 ### Utiliser une interface graphique pour visualiser l'historique ###
 
