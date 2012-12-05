@@ -934,7 +934,7 @@ En plus des permissions, il faut déterminer les chemins impactés par la pouss�
 
 La liste des fichiers modifiés est assez simplement obtenue par la commande `git log` complétée par l'option `--name-only` mentionnée au chapitre 2.
 
-	$ git log -1 --name-only --pretty=format:'' 9f585d
+	$ git log -1 --name-only --pretty=format:"" 9f585d
 
 	README
 	lib/test.rb

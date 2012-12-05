@@ -160,12 +160,12 @@ Voici ci-dessous un modèle écrit par Tim Pope at tpope.net :
 	caractères. Dans certains contextes, la première ligne est traitée
 	comme le sujet d'un e-mail et le reste comme le corps. La ligne
 	vide qui sépare le titre du corps est importante (à moins d'omettre
-	totalement le corps). Des outils tels que `rebase` peuvent être gênés
+	totalement le corps). Des outils tels que rebase peuvent être gênés
 	si vous les laissez collés.
 
 	Paragraphes supplémentaires après des lignes vides.
 
-	 - les listes à puce sont aussi acceptées
+	 - Les listes à puce sont aussi acceptées
 
 	 - Typiquement, un tiret ou un astérisque précédés d'un espace unique
 	   séparés par des lignes vides mais les conventions peuvent varier
@@ -184,7 +184,7 @@ Par privé, j'entends code source fermé non accessible au public en lecture.
 Vous et les autres développeurs aurez accès en poussée au dépôt.
 
 Dans cet environnement, vous pouvez suivre une méthode similaire à ce que vous feriez en utilisant Subversion ou tout autre système centralisé.
-Vous bénéficiez toujours d'avantages tels que la validation hors-ligne et la gestion de branche et de fusion grandement simplifiée mais les étapes restent similaires.
+Vous bénéficiez toujours d'avantages tels que la validation hors-ligne et la gestion de branche et de fusion grandement simplifiées mais les étapes restent similaires.
 La différence principale reste que les fusions ont lieu du côté client plutôt que sur le serveur au moment de valider.
 Voyons à quoi pourrait ressembler la collaboration de deux développeurs sur un dépôt partagé.
 Le premier développeur, John, clone le dépôt, fait une modification et valide localement.
