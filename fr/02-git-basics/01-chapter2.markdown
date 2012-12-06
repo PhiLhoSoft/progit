@@ -28,7 +28,7 @@ Vous pouvez réaliser ceci avec une poignée de commandes `git add` qui spécifi
 
 	$ git add *.c
 	$ git add README
-	$ git commit -m 'version initiale du projet'
+	$ git commit -m "version initiale du projet"
 
 Nous allons passer en revue ce que ces commandes font dans une petite minute.
 Pour l'instant, vous avez un dépôt git avec des fichiers sous gestion de version et une validation initiale.
@@ -537,7 +537,7 @@ Nous allons détailler quelques-unes des plus utilisées.
 Une des options les plus utiles est `-p`, qui montre les différences introduites entre chaque validation.
 Vous pouvez aussi utiliser `-2` qui limite la sortie de la commande aux deux entrées les plus récentes :
 
-	$ git log —p -2
+	$ git log -p -2
 	commit ca82a6dff817ec66f44342007202690a93763949
 	Author: Scott Chacon <schacon@gee-mail.com>
 	Date:   Mon Mar 17 21:52:11 2008 -0700
@@ -627,10 +627,10 @@ De plus, les options `short` (court), `full` (complet) et `fuller` (plus complet
 L'option la plus intéressante est `format` qui permet de décrire précisément le format de sortie.
 C'est spécialement utile pour générer des sorties dans un format facile à analyser par une machine — lorsqu'on spécifie intégralement et explicitement le format, on s'assure qu'il ne changera pas au gré des mises à jour de Git :
 
-	$ git log --pretty=format:"%h — %an, %ar : %s"
-	ca82a6d — Scott Chacon, 11 months ago : changed the version number
-	085bb3b — Scott Chacon, 11 months ago : removed unnecessary test code
-	a11bef0 — Scott Chacon, 11 months ago : first commit
+	$ git log --pretty=format:"%h - %an, %ar : %s"
+	ca82a6d - Scott Chacon, 11 months ago : changed the version number
+	085bb3b - Scott Chacon, 11 months ago : removed unnecessary test code
+	a11bef0 - Scott Chacon, 11 months ago : first commit
 
 Le tableau 2-1 liste les options de formatage les plus utiles.
 
@@ -718,14 +718,14 @@ Le tableau 2-3 récapitule les options que nous venons de voir ainsi que quelque
 
 Par exemple, si vous souhaitez visualiser quels *commits* modifiant les fichiers de test dans l'historique du source de Git ont été validés par Junio Hamano et n'étaient pas des fusions durant le mois d'octobre 2008, vous pouvez lancer ce qui suit :
 
-	$ git log --pretty="%h — %s" --author=gitster --since="2008-10-01" \
+	$ git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
 	   --before="2008-11-01" --no-merges -- t/
-	5610e3b — Fix testcase failure when extended attribute
-	acd3b9e — Enhance hold_lock_file_for_{update,append}()
-	f563754 — demonstrate breakage of detached checkout wi
-	d1a43f2 — reset --hard/read-tree --reset -u: remove un
-	51a94af — Fix "checkout --track -b newbranch" on detac
-	b0ad11e — pull: allow "git pull origin $something:$cur
+	5610e3b - Fix testcase failure when extended attribute
+	acd3b9e - Enhance hold_lock_file_for_{update,append}()
+	f563754 - demonstrate breakage of detached checkout wi
+	d1a43f2 - reset --hard/read-tree --reset -u: remove un
+	51a94af - Fix "checkout --track -b newbranch" on detac
+	b0ad11e - pull: allow "git pull origin $something:$cur
 
 À partir des 20 000 *commits* constituant l'historique des sources de Git, cette commande extrait les 6 qui correspondent aux critères.
 
@@ -763,7 +763,7 @@ Vous pouvez éditer ce message normalement, mais il écrasera le message de la v
 
 Par exemple, si vous validez une version puis réalisez que vous avez oublié de spécifier les modifications d'un fichier, vous pouvez taper les commandes suivantes :
 
-	$ git commit -m 'validation initiale'
+	$ git commit -m "validation initiale"
 	$ git add fichier_oublie
 	$ git commit --amend
 

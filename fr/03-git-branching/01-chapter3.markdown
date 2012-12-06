@@ -22,7 +22,7 @@ Pour visualiser ce concept, supposons un répertoire contenant trois fichiers, c
 Indexer les fichiers signifie calculer la somme de contrôle pour chacun (la fonction de hachage SHA-1 mentionnée au chapitre 1), stocker cette version du fichier dans le dépôt Git (Git les nomme blobs) et ajouter la somme de contrôle à la zone d'index :
 
 	$ git add LISEZMOI test.rb LICENCE
-	$ git commit -m 'commit initial de mon projet'
+	$ git commit -m "commit initial de mon projet"
 
 Lorsque vous créez le *commit* en lançant la commande `git commit`, Git calcule la somme de contrôle de chaque répertoire (ici, seulement pour le répertoire racine) et stocke ces objets arbres dans le dépôt Git.
 Git crée alors un objet *commit* qui contient les méta-données et un pointeur vers l'arbre projet d'origine de manière à pouvoir recréer l'instantané si besoin.

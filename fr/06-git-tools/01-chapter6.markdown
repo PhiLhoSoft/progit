@@ -786,9 +786,9 @@ Maintenant, vous pouvez indexer et valider les fichiers sur plusieurs validation
 
 	$ git reset HEAD^
 	$ git add README
-	$ git commit -m 'updated README formatting'
+	$ git commit -m "updated README formatting"
 	$ git add lib/simplegit.rb
-	$ git commit -m 'added blame'
+	$ git commit -m "added blame"
 	$ git rebase --continue
 
 Git applique le dernier *commit* (`a5f4a0d`) de votre script, et votre historique ressemblera alors à :
@@ -1059,7 +1059,7 @@ Vous ne pouvez pas enregistrer un module comme étant en branche `master` ou n'i
 
 Au moment de valider, vous voyez quelque chose comme :
 
-	$ git commit -m 'first commit with submodule rack'
+	$ git commit -m "first commit with submodule rack"
 	[master 0550271] first commit with submodule rack
 	 2 files changed, 4 insertions(+), 0 deletions(-)
 	 create mode 100644 .gitmodules

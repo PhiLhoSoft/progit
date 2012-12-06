@@ -352,7 +352,7 @@ Si vous l'hébergez en interne et avez réglé le DNS pour faire pointer `gitser
 	$ cd monproject
 	$ git init
 	$ git add .
-	$ git commit -m 'premiere validation'
+	$ git commit -m "premiere validation"
 	$ git remote add origin git@gitserveur:/opt/git/projet.git
 	$ git push origin master
 
@@ -1030,7 +1030,7 @@ Pour initialiser un projet qui n'est pas déjà dans Git, tapez
 
 	$ git init
 	$ git add .
-	$ git commit -m 'premiere validation'
+	$ git commit -m "premiere validation"
 
 Dans le cas d'un projet Git local, ajoutez GitHub comme dépôt distant et poussez-y votre branche master :
 

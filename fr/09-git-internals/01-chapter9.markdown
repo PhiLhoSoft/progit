@@ -546,7 +546,7 @@ Il représente environ 12Ko de code source :
 
 	$ curl https://raw.github.com/mojombo/grit/master/lib/grit/repo.rb > repo.rb
 	$ git add repo.rb
-	$ git commit -m 'added repo.rb'
+	$ git commit -m "added repo.rb"
 	[master 484a592] added repo.rb
 	 3 files changed, 459 insertions(+), 2 deletions(-)
 	 delete mode 100644 bak/test.txt
@@ -1118,7 +1118,7 @@ Il vaut mieux s'en débarrasser :
 
 	$ git rm git.tbz2
 	rm 'git.tbz2'
-	$ git commit -m 'oops - removed large tarball'
+	$ git commit -m "oops - removed large tarball"
 	[master da3f30d] oops - removed large tarball
 	 1 files changed, 0 insertions(+), 0 deletions(-)
 	 delete mode 100644 git.tbz2

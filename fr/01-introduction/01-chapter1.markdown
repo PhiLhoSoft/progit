@@ -112,7 +112,7 @@ Insert 18333fig0105.png
 Figure 1-5. Git stocke les données comme des instantanés du projet au cours du temps
 
 C'est une distinction importante entre Git et quasiment tous les autres VCS.
-Git a reconsidéré quasiment tous les aspects de la gestion de version que la plupart des autres systèmes ont copié des générations précédentes.
+Git a reconsidéré quasiment tous les aspects de la gestion de version que la plupart des autres systèmes ont copiés des générations précédentes.
 Cela fait quasiment de Git un mini système de fichiers avec des outils incroyablement puissants construits dessus, plutôt qu'un simple VCS.
 Nous explorerons les bénéfices qu'il y a à penser les données de cette manière quand nous aborderons la gestion de branches au chapitre 3.
 
@@ -207,7 +207,7 @@ les deux principales sont de l'installer à partir des sources ou d'installer un
 
 Si vous le pouvez, il est généralement conseillé d'installer Git à partir des sources, car vous obtiendrez la version la plus récente.
 Chaque nouvelle version de Git tend à inclure des améliorations utiles de l'interface utilisateur, donc récupérer la toute dernière version est souvent la meilleure option si vous savez compiler des logiciels à partir des sources.
-De nombreuses distributions de Linux contiennent souvent des version très anciennes de logiciels, donc à moins que vous ne travailliez sur une distribution
+De nombreuses distributions de Linux contiennent souvent des versions très anciennes de logiciels, donc à moins que vous ne travailliez sur une distribution
 très récente ou que vous n'utilisiez des backports, une installation à partir des sources peut être le meilleur choix.
 
 Pour installer Git, vous avez besoin des bibliothèques suivantes : curl, zlib, openssl, expat, libiconv.
