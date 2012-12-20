@@ -97,7 +97,7 @@ Les avantages liés à l'utilisation de SSH sont nombreux.
 Primo, vous ne pourrez pas faire autrement si vous souhaitez gérer un accès authentifié en écriture à votre dépôt à travers le réseau.
 Secundo, SSH est relativement simple à mettre en place, les *daemons* SSH sont facilement disponibles, les administrateurs réseaux sont habitués à les gérer et de nombreuses distributions de systèmes d'exploitation en disposent ou proposent des outils pour les gérer.
 Ensuite, l'accès distant à travers SSH est sécurisé, toutes les données sont chiffrées et authentifiées.
-Enfin, comme pour les protocoles Git et local, SSH est efficace et permet de comprimer autant que possible les données avant de les transférer.
+Enfin, comme les protocoles Git et local, SSH est efficace et permet de comprimer autant que possible les données avant de les transférer.
 
 #### Inconvénients ####
 
@@ -253,8 +253,8 @@ Il y a quelques moyens de donner un accès à tout le monde dans l'équipe.
 Le premier est de créer des comptes pour tout le monde, ce qui est logique mais peut s'avérer lourd.
 Vous ne souhaiteriez sûrement pas lancer `adduser` et entrer un mot de passe temporaire pour chaque utilisateur.
 
-Une seconde méthode consiste à créer un seul utilisateur Git sur la machine, demander à chaque développeur nécessitant un accès en écriture de vous envoyer une clé publique SSH et d'ajouter la-dite clé au fichier `~/.ssh/authorized_keys` de votre utilisateur Git.
-À partir de là, tout le monde sera capable d'accéder à la machine via l'utilisateur Git.
+Une seconde méthode consiste à créer un seul utilisateur « git » sur la machine, demander à chaque développeur nécessitant un accès en écriture de vous envoyer une clé publique SSH et d'ajouter la-dite clé au fichier `~/.ssh/authorized_keys` de votre utilisateur « git ».
+À partir de là, tout le monde sera capable d'accéder à la machine via l'utilisateur « git ».
 Cela n'affecte en rien les données de *commit* — les informations de l'utilisateur SSH par lequel on se connecte n'affectent pas les données de *commit* enregistrées.
 
 Une dernière méthode consiste à faire une authentification SSH auprès d'un serveur LDAP ou tout autre système d'authentification centralisé que vous utiliseriez déjà.
@@ -310,14 +310,14 @@ Pour un tutoriel plus approfondi sur la création de clé SSH sur différents sy
 Parcourons les étapes de la mise en place d'un accès SSH côté serveur.
 Dans cet exemple, vous utiliserez la méthode des `authorized_keys` pour authentifier vos utilisateurs.
 Nous supposerons également que vous utilisez une distribution Linux standard telle qu'Ubuntu.
-Premièrement, créez un utilisateur 'git' et un répertoire `.ssh` pour cet utilisateur.
+Premièrement, créez un utilisateur « git » et un répertoire `.ssh` pour cet utilisateur.
 
 	$ sudo adduser git
 	$ su git
 	$ cd
 	$ mkdir .ssh
 
-Ensuite, vous devez ajouter la clé publique d'un développeur au fichier `authorized_keys` de l'utilisateur Git.
+Ensuite, vous devez ajouter la clé publique d'un développeur au fichier `authorized_keys` de l'utilisateur « git ».
 Supposons que vous avez reçu quelques clés par e-mail et les avez sauvées dans des fichiers temporaires.
 Pour rappel, une clé publique ressemble à ceci :
 
@@ -366,8 +366,8 @@ Si vous l'hébergez en interne et avez réglé le DNS pour faire pointer `gitser
 
 De cette manière, vous pouvez rapidement mettre en place un serveur Git en lecture/écriture pour une poignée de développeurs.
 
-En précaution supplémentaire, vous pouvez simplement restreindre l'utilisateur 'git' à des actions Git avec un shell limité appelé `git-shell` qui est fourni avec Git.
-Si vous positionnez ce shell comme shell de login de l'utilisateur 'git', l'utilisateur Git ne peut pas avoir de shell normal sur ce serveur.
+En précaution supplémentaire, vous pouvez simplement restreindre l'utilisateur « git » à des actions Git avec un shell limité appelé `git-shell` qui est fourni avec Git.
+Si vous positionnez ce shell comme shell de login de l'utilisateur « git », ce dernier ne peut pas avoir de shell normal sur ce serveur.
 Pour utiliser cette fonction, spécifiez `git-shell` en lieu et place de bash ou csh pour shell de l'utilisateur.
 Cela se réalise généralement en éditant le fichier `/etc/passwd` :
 
@@ -382,7 +382,7 @@ La ligne devrait maintenant ressembler à ceci :
 
 	git:x:1000:1000::/home/git:/usr/bin/git-shell
 
-À présent, l'utilisateur 'git' ne peut plus utiliser la connexion SSH que pour pousser et tirer sur des dépôts Git, il ne peut plus ouvrir un shell.
+À présent, l'utilisateur « git » ne peut plus utiliser la connexion SSH que pour pousser et tirer sur des dépôts Git, il ne peut plus ouvrir un shell.
 Si vous essayez, vous verrez un rejet de login :
 
 	$ ssh git@gitserveur
